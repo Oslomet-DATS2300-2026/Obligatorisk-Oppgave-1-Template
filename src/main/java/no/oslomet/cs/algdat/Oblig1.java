@@ -22,7 +22,7 @@ public class Oblig1 {
     public static void rotasjon(char[] a) {throw new UnsupportedOperationException();}
 
     // Oppgave 6
-    public static void rotason(char[] a, int k) {throw new UnsupportedOperationException();}
+    public static void rotasjon(char[] a, int k) {throw new UnsupportedOperationException();}
 
     // Oppgave 7
     public static String flett(String s, String t) {throw new UnsupportedOperationException();}
