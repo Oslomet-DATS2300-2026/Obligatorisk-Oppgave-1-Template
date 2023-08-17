@@ -1,8 +1,8 @@
 package no.oslomet.cs.algdat;
 
-public class Oblig1Unsolved {
+public class Oblig1 {
 
-    private Oblig1Unsolved() {}
+    private Oblig1() {}
 
     // Oppgave 1
     public static int maks(int[] a) {throw new UnsupportedOperationException();}
