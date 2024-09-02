@@ -221,6 +221,8 @@ class Oppgave5Tests {
 class Oppgave6Tests {
     @Test
     void rotasjonTom() {
+        if (Oblig1.gruppeMedlemmer() == 1) return;
+
         char[] tom = {};
         assertTimeout(Duration.ofMillis(10), () -> Oblig1.rotasjon(tom, 1), "Metoden ser ut til å gå evig på tom tabell.");
         assertDoesNotThrow(() -> Oblig1.rotasjon(tom, 1), "Metoden kaster feilmelding på tom tabell.");
@@ -229,6 +231,8 @@ class Oppgave6Tests {
 
     @Test
     void rotasjonEttElement() {
+        if (Oblig1.gruppeMedlemmer() == 1) return;
+
         char[] ettElement = {'A'};
         char[] svar = {'A'};
         for (int i = -1; i < 2; ++i) {
@@ -239,6 +243,8 @@ class Oppgave6Tests {
 
     @Test
     void rotasjonToElement() {
+        if (Oblig1.gruppeMedlemmer() == 1) return;
+
         char[] a = {'A', 'B'};
         char[] svar = {'B', 'A'};
         Oblig1.rotasjon(a, 1);
@@ -250,6 +256,8 @@ class Oppgave6Tests {
 
     @Test
     void rotasjonFlereElement() {
+        if (Oblig1.gruppeMedlemmer() == 1) return;
+
         char[] a = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
         char[] svar = {'G', 'H', 'I', 'J', 'A', 'B', 'C', 'D', 'E', 'F'};
         Oblig1.rotasjon(a, 4);
@@ -267,6 +275,8 @@ class Oppgave6Tests {
 
     @Test
     void rotasjonTid() {
+        if (Oblig1.gruppeMedlemmer() == 1) return;
+
         char[] x = new char[100_000];
 
         assertTimeout(Duration.ofMillis(20), () -> Oblig1.rotasjon(x, 99_999), "Metoden er ueffektiv på 99 999 rotasjoner.");
@@ -331,6 +341,8 @@ class Oppgave7Tests {
 class Oppgave8Tests{
     @Test
     void indekssorteringTom() {
+        if (Oblig1.gruppeMedlemmer() == 1) return;
+
         int[] tom = {};
         assertDoesNotThrow(() -> Oblig1.indeksSortering(tom), "Metoden kaster feil på tom tabell.");
         assertArrayEquals(new int[] {}, tom, "Metoden endrer på tom tabell.");
@@ -339,6 +351,8 @@ class Oppgave8Tests{
 
     @Test
     void indekssorteringEttElement() {
+        if (Oblig1.gruppeMedlemmer() == 1) return;
+
         int[] ettElement = {5};
         assertDoesNotThrow(() -> Oblig1.indeksSortering(ettElement), "Metoden kaster feil på tabell med ett element.");
         assertArrayEquals(new int[] {0}, Oblig1.indeksSortering(ettElement), "Metoden gir feil svar på tabell med ett element.");
@@ -346,6 +360,7 @@ class Oppgave8Tests{
 
     @Test
     void indekssorteringFlereElement() {
+        if (Oblig1.gruppeMedlemmer() == 1) return;
         int[] a = {1, 2, 3, 4, 5, 6};
         int[] sortert = {1, 2, 3, 4, 5, 6};
 
@@ -363,6 +378,8 @@ class Oppgave8Tests{
 
     @Test
     void indekssorteringLikeElement() {
+        if (Oblig1.gruppeMedlemmer() == 1) return;
+
         int[] a = {5, 2, 8, 3, 5, 10, 7, 5, 2, 10, 6};
         int[] c = a.clone();
         int[] sortert = {2, 2, 3, 5, 5, 5, 6, 7, 8, 10, 10};
@@ -382,6 +399,8 @@ class Oppgave8Tests{
 class Oppgave9Tests{
     @Test
     void tredjeMinForLiten() {
+        if (Oblig1.gruppeMedlemmer() < 3) return;
+
         int[] a = {};
         assertThrows(NoSuchElementException.class, () -> Oblig1.tredjeMin(a), "Metoden gir ingen eller gal feilmelding på tom tabell.");
         int[] b = {5};
@@ -392,6 +411,8 @@ class Oppgave9Tests{
 
     @Test
     void tredjeMinTreElement() {
+        if (Oblig1.gruppeMedlemmer() < 3) return;
+
         int[] a = {1, 2, 3};
 
         do {
@@ -408,6 +429,8 @@ class Oppgave9Tests{
 
     @Test
     void tredjeMinSeksElement() {
+        if (Oblig1.gruppeMedlemmer() < 3) return;
+
         int[] a = {1, 2, 3, 4, 5, 6};
 
         do {
@@ -424,6 +447,8 @@ class Oppgave9Tests{
 
     @Test
     void tredjeMinTilfeldigTabell() {
+        if (Oblig1.gruppeMedlemmer() < 3) return;
+
         for (int i = 0; i < 10; ++i) {
             int[] a = Hjelpemetoder.randPerm(10);
             int[] indekser = Oblig1.tredjeMin(a);
@@ -436,6 +461,7 @@ class Oppgave9Tests{
 
     @Test
     void tredjeMinTid() {
+        if (Oblig1.gruppeMedlemmer() < 3) return;
         int[] a = Hjelpemetoder.randPerm(100_000);
         assertTimeout(Duration.ofMillis(100), () -> Oblig1.tredjeMin(a), "Metoden er for ueffektiv på store tabeller. Sorterer du hele tabellen?");
     }
@@ -444,12 +470,16 @@ class Oppgave9Tests{
 class Oppgave10Tests {
     @Test
     void inneholdtToTommeOrd() {
+        if (Oblig1.gruppeMedlemmer() < 3) return;
+
         assertDoesNotThrow(() -> Oblig1.inneholdt("", ""), "Metoden kaster feilmelding på to tomme strenger.");
         assertTrue(Oblig1.inneholdt("", ""), "Metoden gir galt svar på to tomme strenger.");
     }
 
     @Test
     void inneholdtEttTomtOrd() {
+        if (Oblig1.gruppeMedlemmer() < 3) return;
+
         assertDoesNotThrow(() -> Oblig1.inneholdt("", "A"), "Metoden kaster feilmelding når første streng er tom.");
         assertTrue(Oblig1.inneholdt("", "A"),"Metoden gir feil svar om første streng er tom og siste ikke er det.");
 
@@ -459,11 +489,15 @@ class Oppgave10Tests {
 
     @Test
     void inneholdtLike() {
+        if (Oblig1.gruppeMedlemmer() < 3) return;
+
         assertTrue(Oblig1.inneholdt("ABBA", "ABBA"), "Metoden gir feil svar når første er 'ABBA' og siste også er 'ABBA'");
     }
 
     @Test
     void inneholdtEksempler() {
+        if (Oblig1.gruppeMedlemmer() < 3) return;
+
         assertTrue(Oblig1.inneholdt("XYYX", "AAAAAAAYXXY"), "Metoden gir feil svar på 'XYYX' og 'AAAAAAAYXXY'.");
         assertTrue(Oblig1.inneholdt("ABBA", "RABARBRA"), "Metoden gir feil svar på 'ABBA' og 'RABARBRA'.");
         assertFalse(Oblig1.inneholdt("ABBA", "BARBERER"), "Metoden gir feil svar på 'ABBA' og 'BARBERER'.");
@@ -474,6 +508,8 @@ class Oppgave10Tests {
 
     @Test
     void inneholdtTid() {
+        if (Oblig1.gruppeMedlemmer() < 3) return;
+
         char[] x = new char[100_000];
         for (int i = 0; i < 50_000; ++i) {
             x[2*i] = 'X';
