@@ -10,6 +10,14 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+class Oppgave0Tests {
+    @Test
+    void gruppeMedlemmerOppdatert() {
+        assertDoesNotThrow(() -> Oblig1.gruppeMedlemmer(), "Ikke ført inn antall gruppemedlemmer.");
+        assertTrue(1 <= Oblig1.gruppeMedlemmer() && Oblig1.gruppeMedlemmer() <= 5, "Ført inn for mange eller for få gruppemedlemmer.");
+    }
+}
+
 class Oppgave1Tests {
     @Test
     void maksTom() {

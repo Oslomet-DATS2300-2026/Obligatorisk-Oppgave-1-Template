@@ -7,7 +7,7 @@ public class Oblig1 {
     // Oppgave 0
     public static int gruppeMedlemmer() {
         throw new UnsupportedOperationException();
-        // return 0; // Skal returne hvor mange som er i gruppa deres.
+        // Skal returne hvor mange som er i gruppa deres.
     }
 
     // Oppgave 1
