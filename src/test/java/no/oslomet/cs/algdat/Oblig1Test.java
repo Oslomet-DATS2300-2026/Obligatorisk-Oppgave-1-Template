@@ -133,6 +133,48 @@ class Oppgave3Tests {
 
 class Oppgave4Tests {
     @Test
+    void sorteringTom() {
+        int[] tom = {};
+        assertDoesNotThrow(() -> Oblig1.sorter(tom, 0, 0), "Metoden kaster feilmelding på tom tabell.");
+    }
+
+    @Test
+    void sorteringEttElement() {
+        int[] ettElement = {5};
+        assertDoesNotThrow(() -> Oblig1.sorter(ettElement, 0, 0), "Metoden kaster feilmelding på tabell med ett element.");
+    }
+
+    @Test
+    void sorteringUlovligIndeks() {
+        int[] toElement = {5, 6};
+        assertThrows(IndexOutOfBoundsException.class, () -> Oblig1.sorter(toElement, -1, 1), "Kaster ingen eller gal feilmelding på negativ 'fra'");
+        assertThrows(IndexOutOfBoundsException.class, () -> Oblig1.sorter(toElement, 0, 2), "Kaster ingen eller gal feilmelding når 'til' er for stor.");
+        assertThrows(IndexOutOfBoundsException.class, () -> Oblig1.sorter(toElement, 0, 3), "Kaster ingen eller gal feilmelding når 'til' er for stor.");
+        assertDoesNotThrow(() -> Oblig1.sorter(toElement, 1, 0), "Kaster feilmelding når til er mindre enn fra");
+    }
+
+    void sorteringDeler() {
+        int[] a = {4, 2, 3, 1, 5, 3, 8};
+        int[] b = a.clone();
+        int[] svar = {4, 2, 1, 3, 5, 3, 8};
+        Oblig1.sorter(b, 2, 4);
+        assertArrayEquals(svar, a, String.format("Sorterer verdier i midten feil. På tabellen %s, med sorter(a, 2, 4), fikk du %s men skulle fått %s.", a, b, svar));
+    }
+
+    @Test
+    void sorteringHele() {
+        int[] a = {1, 2, 3, 4, 5, 6};
+        int[] svar = a.clone();
+
+        do {
+            int[] c = a.clone();
+            Oblig1.sorter(c, 0, 5);
+
+            assertArrayEquals(svar, c, String.format("Gitt tabellen %s skulle svaret blitt %s, men du fikk %s.", Arrays.toString(a), Arrays.toString(svar), Arrays.toString(c)));
+        } while (Hjelpemetoder.nestePermutasjon(a));
+    }
+
+    @Test
     void delsorteringTom() {
         int[] tom = {};
         assertDoesNotThrow(() -> Oblig1.delsortering(tom), "Metoden kaster feilmelding på tom tabell.");
