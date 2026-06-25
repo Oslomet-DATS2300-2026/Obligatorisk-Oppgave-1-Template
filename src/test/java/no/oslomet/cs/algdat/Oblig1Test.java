@@ -136,12 +136,14 @@ class Oppgave4Tests {
     void sorteringTom() {
         int[] tom = {};
         assertDoesNotThrow(() -> Oblig1.sorter(tom, 0, 0), "Metoden kaster feilmelding på tom tabell.");
+        assertArrayEquals(new int[] {}, tom, "Metoden gir ut ikke-tom tabell på tom tabell.");
     }
 
     @Test
     void sorteringEttElement() {
         int[] ettElement = {5};
         assertDoesNotThrow(() -> Oblig1.sorter(ettElement, 0, 0), "Metoden kaster feilmelding på tabell med ett element.");
+        assertArrayEquals(new int[] {5}, ettElement, "Metoden gir ut gal tabell på tabell med ett element.");
     }
 
     @Test
@@ -153,12 +155,13 @@ class Oppgave4Tests {
         assertDoesNotThrow(() -> Oblig1.sorter(toElement, 1, 0), "Kaster feilmelding når til er mindre enn fra");
     }
 
+    @Test
     void sorteringDeler() {
         int[] a = {4, 2, 3, 1, 5, 3, 8};
         int[] b = a.clone();
         int[] svar = {4, 2, 1, 3, 5, 3, 8};
         Oblig1.sorter(b, 2, 4);
-        assertArrayEquals(svar, a, String.format("Sorterer verdier i midten feil. På tabellen %s, med sorter(a, 2, 4), fikk du %s men skulle fått %s.", a, b, svar));
+        assertArrayEquals(svar, b, String.format("Sorterer verdier i midten feil. På tabellen %s, med sorter(a, 2, 4), fikk du %s men skulle fått %s.", a, b, svar));
     }
 
     @Test
@@ -172,6 +175,18 @@ class Oppgave4Tests {
 
             assertArrayEquals(svar, c, String.format("Gitt tabellen %s skulle svaret blitt %s, men du fikk %s.", Arrays.toString(a), Arrays.toString(svar), Arrays.toString(c)));
         } while (Hjelpemetoder.nestePermutasjon(a));
+    }
+
+    @Test
+    void sorteringTid() {
+        int[] a = Hjelpemetoder.randPerm(100_000);
+
+        IntStream svarStream = IntStream.iterate(1, n -> n+1).limit(100_000);
+        int[] svar = svarStream.toArray();
+
+        assertTimeout(Duration.ofMillis(100), () -> Oblig1.sorter(a, 0, 100_000 - 1), "Metoden brukte mer enn 100ms og er for ineffektiv!");
+
+        assertArrayEquals(svar, a, "Feil resultat for stor tabell.");
     }
 
     @Test
