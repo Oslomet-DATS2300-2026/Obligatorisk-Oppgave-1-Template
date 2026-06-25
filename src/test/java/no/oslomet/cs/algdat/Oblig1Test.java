@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Oppgave0Tests {
     @Test
     void gruppeMedlemmerOppdatert() {
-        assertDoesNotThrow(() -> Oblig1.gruppeMedlemmer(), "Ikke ført inn antall gruppemedlemmer.");
+        assertDoesNotThrow(Oblig1::gruppeMedlemmer, "Ikke ført inn antall gruppemedlemmer.");
         assertTrue(1 <= Oblig1.gruppeMedlemmer() && Oblig1.gruppeMedlemmer() <= 5, "Ført inn for mange eller for få gruppemedlemmer.");
     }
 }
@@ -161,7 +161,13 @@ class Oppgave4Tests {
         int[] b = a.clone();
         int[] svar = {4, 2, 1, 3, 5, 3, 8};
         Oblig1.sorter(b, 2, 4);
-        assertArrayEquals(svar, b, String.format("Sorterer verdier i midten feil. På tabellen %s, med sorter(a, 2, 4), fikk du %s men skulle fått %s.", a, b, svar));
+        assertArrayEquals(svar, b,
+                String.format("Sorterer verdier i midten feil. På tabellen %s, med sorter(a, 2, 4), fikk du %s men skulle fått %s.",
+                        Arrays.toString(a),
+                        Arrays.toString(b),
+                        Arrays.toString(svar)
+                )
+        );
     }
 
     @Test
