@@ -23,25 +23,27 @@ public class Oblig1 {
 
     // Oppgave 4
     public static void sorter(int[] a, int fra, int til) {throw new UnsupportedOperationException();}
-    public static void delsortering(int[] a) {throw new UnsupportedOperationException();}
 
     // Oppgave 5
-    public static void rotasjon(char[] a) {throw new UnsupportedOperationException();}
+    public static void delsortering(int[] a) {throw new UnsupportedOperationException();}
 
     // Oppgave 6
-    public static void rotasjon(char[] a, int k) {throw new UnsupportedOperationException();}
+    public static void rotasjon(char[] a) {throw new UnsupportedOperationException();}
 
     // Oppgave 7
+    public static void rotasjon(char[] a, int k) {throw new UnsupportedOperationException();}
+
+    // Oppgave 8
     public static String flett(String s, String t) {throw new UnsupportedOperationException();}
 
     public static String flett(String... s) {throw new UnsupportedOperationException();}
 
-    // Oppgave 8
+    // Oppgave 9
     public static int[] indeksSortering(int[] a) {throw new UnsupportedOperationException();}
 
-    // Oppgave 9
+    // Oppgave 10
     public static int[] tredjeMin(int[] a) {throw new UnsupportedOperationException();}
 
-    // Oppgave 10
+    // Oppgave 11
     public static boolean inneholdt(String a, String b) {throw new UnsupportedOperationException();}
 }

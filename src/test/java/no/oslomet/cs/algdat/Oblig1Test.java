@@ -136,14 +136,14 @@ class Oppgave4Tests {
     void sorteringTom() {
         int[] tom = {};
         assertDoesNotThrow(() -> Oblig1.sorter(tom, 0, 0), "Metoden kaster feilmelding på tom tabell.");
-        assertArrayEquals(new int[] {}, tom, "Metoden gir ut ikke-tom tabell på tom tabell.");
+        assertArrayEquals(new int[]{}, tom, "Metoden gir ut ikke-tom tabell på tom tabell.");
     }
 
     @Test
     void sorteringEttElement() {
         int[] ettElement = {5};
         assertDoesNotThrow(() -> Oblig1.sorter(ettElement, 0, 0), "Metoden kaster feilmelding på tabell med ett element.");
-        assertArrayEquals(new int[] {5}, ettElement, "Metoden gir ut gal tabell på tabell med ett element.");
+        assertArrayEquals(new int[]{5}, ettElement, "Metoden gir ut gal tabell på tabell med ett element.");
     }
 
     @Test
@@ -187,7 +187,7 @@ class Oppgave4Tests {
     void sorteringTid() {
         int[] a = Hjelpemetoder.randPerm(100_000);
 
-        IntStream svarStream = IntStream.iterate(1, n -> n+1).limit(100_000);
+        IntStream svarStream = IntStream.iterate(1, n -> n + 1).limit(100_000);
         int[] svar = svarStream.toArray();
 
         assertTimeout(Duration.ofMillis(100), () -> Oblig1.sorter(a, 0, 100_000 - 1), "Metoden brukte mer enn 100ms og er for ineffektiv!");
@@ -195,6 +195,9 @@ class Oppgave4Tests {
         assertArrayEquals(svar, a, "Feil resultat for stor tabell.");
     }
 
+}
+
+class Oppgave5Tests {
     @Test
     void delsorteringTom() {
         int[] tom = {};
@@ -258,7 +261,7 @@ class Oppgave4Tests {
     }
 }
 
-class Oppgave5Tests {
+class Oppgave6Tests {
     @Test
     void rotasjonTom() {
         char[] tom = {};
@@ -289,7 +292,7 @@ class Oppgave5Tests {
     }
 }
 
-class Oppgave6Tests {
+class Oppgave7Tests {
     @Test
     void rotasjonTom() {
         if (Oblig1.gruppeMedlemmer() == 1) return;
@@ -362,7 +365,7 @@ class Oppgave6Tests {
     }
 }
 
-class Oppgave7Tests {
+class Oppgave8Tests {
     @Test
     void flettTom() {
         assertDoesNotThrow(() -> Oblig1.flett("", ""), "Metoden gir feilmelding for to tomme strenger.");
@@ -409,7 +412,7 @@ class Oppgave7Tests {
     }
 }
 
-class Oppgave8Tests{
+class Oppgave9Tests{
     @Test
     void indekssorteringTom() {
         if (Oblig1.gruppeMedlemmer() == 1) return;
@@ -467,7 +470,7 @@ class Oppgave8Tests{
     }
 }
 
-class Oppgave9Tests{
+class Oppgave10Tests{
     @Test
     void tredjeMinForLiten() {
         if (Oblig1.gruppeMedlemmer() < 3) return;
@@ -538,7 +541,7 @@ class Oppgave9Tests{
     }
 }
 
-class Oppgave10Tests {
+class Oppgave11Tests {
     @Test
     void inneholdtToTommeOrd() {
         if (Oblig1.gruppeMedlemmer() < 3) return;
