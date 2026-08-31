@@ -142,7 +142,7 @@ class Oppgave4Tests {
     @Test
     void sorteringEttElement() {
         int[] ettElement = {5};
-        assertDoesNotThrow(() -> Oblig1.sorter(ettElement, 0, 0), "Metoden kaster feilmelding på tabell med ett element.");
+        assertDoesNotThrow(() -> Oblig1.sorter(ettElement, 0, 1), "Metoden kaster feilmelding på tabell med ett element.");
         assertArrayEquals(new int[]{5}, ettElement, "Metoden gir ut gal tabell på tabell med ett element.");
     }
 
@@ -150,8 +150,8 @@ class Oppgave4Tests {
     void sorteringUlovligIndeks() {
         int[] toElement = {5, 6};
         assertThrows(IndexOutOfBoundsException.class, () -> Oblig1.sorter(toElement, -1, 1), "Kaster ingen eller gal feilmelding på negativ 'fra'");
-        assertThrows(IndexOutOfBoundsException.class, () -> Oblig1.sorter(toElement, 0, 2), "Kaster ingen eller gal feilmelding når 'til' er for stor.");
         assertThrows(IndexOutOfBoundsException.class, () -> Oblig1.sorter(toElement, 0, 3), "Kaster ingen eller gal feilmelding når 'til' er for stor.");
+        assertThrows(IndexOutOfBoundsException.class, () -> Oblig1.sorter(toElement, 0, 4), "Kaster ingen eller gal feilmelding når 'til' er for stor.");
         assertDoesNotThrow(() -> Oblig1.sorter(toElement, 1, 0), "Kaster feilmelding når til er mindre enn fra");
     }
 
@@ -177,7 +177,7 @@ class Oppgave4Tests {
 
         do {
             int[] c = a.clone();
-            Oblig1.sorter(c, 0, 5);
+            Oblig1.sorter(c, 0, 6);
 
             assertArrayEquals(svar, c, String.format("Gitt tabellen %s skulle svaret blitt %s, men du fikk %s.", Arrays.toString(a), Arrays.toString(svar), Arrays.toString(c)));
         } while (Hjelpemetoder.nestePermutasjon(a));
@@ -190,7 +190,7 @@ class Oppgave4Tests {
         IntStream svarStream = IntStream.iterate(1, n -> n + 1).limit(100_000);
         int[] svar = svarStream.toArray();
 
-        assertTimeout(Duration.ofMillis(100), () -> Oblig1.sorter(a, 0, 100_000 - 1), "Metoden brukte mer enn 100ms og er for ineffektiv!");
+        assertTimeout(Duration.ofMillis(100), () -> Oblig1.sorter(a, 0, 100_000), "Metoden brukte mer enn 100ms og er for ineffektiv!");
 
         assertArrayEquals(svar, a, "Feil resultat for stor tabell.");
     }
