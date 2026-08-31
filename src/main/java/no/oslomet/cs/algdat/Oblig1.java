@@ -22,7 +22,7 @@ public class Oblig1 {
     public static int antallUlikeUsortert(int[] a) {throw new UnsupportedOperationException();}
 
     // Oppgave 4
-    public static void sorter(int[] a, int fra, int til) {throw new UnsupportedOperationException();}
+    public static void sorter(int[] a, int v, int h) {throw new UnsupportedOperationException();}
 
     // Oppgave 5
     public static void delsortering(int[] a) {throw new UnsupportedOperationException();}
